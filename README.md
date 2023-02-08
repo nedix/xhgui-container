@@ -1,6 +1,12 @@
 # xhgui-docker
 
-## Setup
+A Docker image for the [XHGui](https://github.com/perftools/xhgui) web interface
+to turn PHP profiling data into a graphical representation. The example in this
+readme describes how XHGui can be use together with Xhprof.
+
+## Example
+
+### Setup
 
 *docker-compose-xhgui.yml*
 
@@ -35,7 +41,7 @@ services:
       - nginx-xhprof
 
   xhgui:
-    image: xhgui
+    image: ghcr.io/nedix/xhgui-docker
     volumes:
       - xhprof:/data/xhprof
     ports:
@@ -46,11 +52,15 @@ services:
 volumes:
   app:
     driver: local
+    driver_opts:
+      device: ${PWD}
+      o: bind
+      type: none
   xhprof:
     driver: local
 ```
 
-## Usage
+### Usage
 
 ### Step 1.
 
@@ -62,11 +72,11 @@ docker compose -f docker-compose.yml -f docker-compose-xhgui.yml up -d
 
 ### Step 2.
 
-Navigate to your page on [http://localhost:8000](localhost:8000) to capture the profiling data.
+Navigate to your page on [localhost:8000](http://localhost:8000) to capture the profiling data.
 
 ### Step 3.
 
-Execute the following command to load the data into XHGUI:
+Execute the following command to load the data into XHGui:
 
 ```shell
 docker compose -f docker-compose-xhgui.yml exec xhgui php /var/www/xhgui/external/import.php -f /data/xhprof/xhgui.data.jsonl
@@ -74,4 +84,4 @@ docker compose -f docker-compose-xhgui.yml exec xhgui php /var/www/xhgui/externa
 
 ### Step 4.
 
-Find XHGUI on [http://localhost:8001](localhost:8001).
+Find XHGui on [localhost:8001](http://localhost:8001).
