@@ -3,5 +3,5 @@ setup:
 
 up: detach =
 up:
-	@docker run --rm $(if $(detach),-d,) -p 1235:80 --name xhgui \
+	@docker run --rm $(if $(detach),-d,) -p 1234:80 --name xhgui \
 		xhgui
