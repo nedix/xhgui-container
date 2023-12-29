@@ -1,32 +1,31 @@
-# xhgui-docker
+# [xhgui]-docker
 
-A Docker image for the [XHGui](https://github.com/perftools/xhgui) web interface
-to turn PHP profiling data into a graphical representation. The example in this
-readme describes how XHGui can be use together with Xhprof.
+Used with Xhprof to give insight into performance metrics of PHP applications.
 
-## Example
+## Setup
 
-### Setup
+#### Create a Docker Compose manifest
+
+This example Docker Compose manifest expects that you have your main application services defined in `docker-compose.yml`.
+It will listen for requests on port `81` and `82`.
 
 *docker-compose-xhgui.yml*
 
 ```yaml
-version: "3.8"
-
 services:
   nginx-xhprof:
     image: wodby/nginx:1.19
     environment:
       NGINX_VHOST_PRESET: php
       NGINX_BACKEND_HOST: xhprof
-      NGINX_SERVER_ROOT: '${NGINX_SERVER_ROOT:-/var/www/html/public_html}'
+      NGINX_SERVER_ROOT: /var/www/html/public
     ports:
-      - 8000:80
+      - 81:80
     volumes:
       - app:/var/www/html
 
   xhprof:
-    image: wodby/php:8.1-dev
+    image: wodby/php:8.2-dev
     environment:
       - PHP_DEBUG=true
       - PHP_XHPROF=true
@@ -45,7 +44,7 @@ services:
     volumes:
       - xhprof:/data/xhprof
     ports:
-      - 8001:80
+      - 82:80
     depends_on:
       - xhprof
 
@@ -60,28 +59,34 @@ volumes:
     driver: local
 ```
 
-### Usage
+## Usage
 
-### Step 1.
-
-Start the containers:
+#### Start the services
 
 ```shell
 docker compose -f docker-compose.yml -f docker-compose-xhgui.yml up -d
 ```
 
-### Step 2.
+#### Capture a profiling report
 
-Navigate to your page on [localhost:8000](http://localhost:8000) to capture the profiling data.
+Navigate to any page on http://127.0.0.1:81 to capture the profiling report.
 
-### Step 3.
+#### Import data
 
-Execute the following command to load the data into XHGui:
+Run the following command to load the data into XHGui:
 
 ```shell
 docker compose -f docker-compose-xhgui.yml exec xhgui php /var/www/xhgui/external/import.php -f /data/xhprof/xhgui.data.jsonl
 ```
 
-### Step 4.
+#### Get insight into performance
 
-Find XHGui on [localhost:8001](http://localhost:8001).
+Navigate to the [XHGui] web interface on http://127.0.0.1:82.
+
+<hr>
+
+## Attribution
+
+Powered by [XHGui].
+
+[XHGui]: https://github.com/perftools/xhgui
