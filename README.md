@@ -4,10 +4,10 @@ Web GUI for XHProf profiling reports.
 
 ## Usage
 
-#### Create a Compose manifest
-
-This example Docker Compose manifest expects that you have your main application services defined in `compose.yml`.
+This example expects that you have your main application services defined in `compose.yml`.
 It will listen for requests on port `81` and `82`.
+
+#### 1. Create the Compose manifest
 
 ```shell
 wget -q https://raw.githubusercontent.com/nedix/xhgui-container/main/docs/examples/compose-xhgui.yml
@@ -31,7 +31,7 @@ Run the following command to load the data into XHGui:
 docker compose -f compose-xhgui.yml exec xhgui php /var/www/xhgui/external/import.php -f /data/xhprof/xhgui.data.jsonl
 ```
 
-#### Get insight into performance
+#### Get insight into performance metrics
 
 Navigate to the XHGui web interface on http://127.0.0.1:82.
 
