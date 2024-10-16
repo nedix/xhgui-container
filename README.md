@@ -40,7 +40,7 @@ services:
       - nginx-xhprof
 
   xhgui:
-    image: ghcr.io/nedix/xhgui-container
+    image: nedix/xhgui
     volumes:
       - xhprof:/data/xhprof
     ports:
