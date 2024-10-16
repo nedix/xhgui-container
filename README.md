@@ -1,6 +1,6 @@
 # [xhgui-container](https://github.com/nedix/xhgui-container)
 
-Used with Xhprof to give insight into performance metrics of PHP applications.
+Gain insight into performance metrics of a PHP application.
 
 ## Setup
 
