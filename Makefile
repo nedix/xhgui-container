@@ -1,7 +1,7 @@
 setup:
-	@docker build . -t xhgui
+	@docker build -f Containerfile -t xhgui
 
-up: detach =
+up: PORT = 8080
 up:
-	@docker run --rm $(if $(detach),-d,) -p 1234:80 --name xhgui \
+	@docker run --rm -p $(PORT):80 --name xhgui \
 		xhgui
