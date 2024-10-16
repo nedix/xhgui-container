@@ -1,6 +1,6 @@
 # [xhgui-container](https://github.com/nedix/xhgui-container)
 
-Web GUI for xhprof.
+Web GUI for XHProf profiling reports.
 
 ## Usage
 
