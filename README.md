@@ -13,17 +13,17 @@ It will listen for requests on port `81` and `82`.
 wget -q https://raw.githubusercontent.com/nedix/xhgui-container/main/docs/examples/compose-xhgui.yml
 ```
 
-#### Start the services
+#### 2. Start the services
 
 ```shell
 docker compose -f compose.yml -f compose-xhgui.yml up -d
 ```
 
-#### Capture a profiling report
+#### 3. Capture a profiling report
 
 Navigate to any page on http://127.0.0.1:81 to capture the profiling report.
 
-#### Import the profiling data into XHGui
+#### 4. Import the profiling data into XHGui
 
 Run the following command to load the data into XHGui:
 
@@ -31,7 +31,7 @@ Run the following command to load the data into XHGui:
 docker compose -f compose-xhgui.yml exec xhgui php /var/www/xhgui/external/import.php -f /data/xhprof/xhgui.data.jsonl
 ```
 
-#### Get insight into performance metrics
+#### 5. Get insight into performance metrics
 
 Navigate to the XHGui web interface on http://127.0.0.1:82.
 
