@@ -1,0 +1,45 @@
+services:
+  nginx-xhprof:
+    image: wodby/nginx:1.19
+    environment:
+      NGINX_VHOST_PRESET: php
+      NGINX_BACKEND_HOST: xhprof
+      NGINX_SERVER_ROOT: /var/www/html/public
+    ports:
+      - 81:80
+    volumes:
+      - app:/var/www/html
+
+  xhprof:
+    image: wodby/php:8.2-dev
+    environment:
+      - PHP_DEBUG=true
+      - PHP_XHPROF=true
+      - PHP_XHPROF_SAMPLING_INTERVAL=100000
+      - PHP_XHPROF_SAMPLING_DEPTH=INT_MAX
+      - PHP_XHPROF_COLLECT_ADDITIONAL_INFO=0
+      - PHP_XHPROF_OUTPUT_DIR=/mnt/files/xhprof
+    volumes:
+      - app:/var/www/html
+      - xhprof:/mnt/files/xhprof
+    depends_on:
+      - nginx-xhprof
+
+  xhgui:
+    image: nedix/xhgui
+    volumes:
+      - xhprof:/data/xhprof
+    ports:
+      - 82:80
+    depends_on:
+      - xhprof
+
+volumes:
+  app:
+    driver: local
+    driver_opts:
+      device: ${PWD}
+      o: bind
+      type: none
+  xhprof:
+    driver: local
