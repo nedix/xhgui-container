@@ -1,7 +1,7 @@
 ARG PHP_VERSION=8.3
 ARG XHGUI_VERSION=0.22.1
 
-FROM xhgui/xhgui:${XHGUI_VERSION} as xhgui
+FROM xhgui/xhgui:${XHGUI_VERSION} AS xhgui
 
 FROM php:${PHP_VERSION}
 
