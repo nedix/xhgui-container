@@ -1,4 +1,4 @@
-# [xhgui]-container
+# [xhgui-container](https://github.com/nedix/xhgui-container)
 
 Used with Xhprof to give insight into performance metrics of PHP applications.
 
