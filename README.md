@@ -1,6 +1,6 @@
 # [xhgui-container](https://github.com/nedix/xhgui-container)
 
-Web GUI for xhprof.
+Web GUI for XHProf profiling reports.
 
 ## Usage
 
@@ -10,7 +10,7 @@ This example Docker Compose manifest expects that you have your main application
 It will listen for requests on port `81` and `82`.
 
 ```shell
-wget -q https://raw.githubusercontent.com/nedix/spx-container/main/docs/examples/compose-xhgui.yml
+wget -q https://raw.githubusercontent.com/nedix/xhgui-container/main/docs/examples/compose-xhgui.yml
 ```
 
 #### Start the services
