@@ -12,7 +12,7 @@ It will listen for requests on port `81` and `82`.
 ### 1. Create the Compose manifest
 
 ```shell
-wget -q https://raw.githubusercontent.com/nedix/xhgui-container/main/docs/examples/compose-xhgui.yml
+wget -O ompose-xhgui.yml https://raw.githubusercontent.com/nedix/xhgui-container/main/docs/examples/compose-xhgui.yml
 ```
 
 
