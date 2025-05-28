@@ -16,7 +16,7 @@ wget -q https://raw.githubusercontent.com/nedix/xhgui-container/main/docs/exampl
 ```
 
 
-### 2. Start the services
+### 2. Start the containers
 
 ```shell
 docker compose -f compose.yml -f compose-xhgui.yml up -d
