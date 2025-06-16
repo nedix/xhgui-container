@@ -9,7 +9,7 @@ COPY --from=xhgui /var/www/xhgui /var/www/xhgui
 
 USER root
 
-ADD rootfs /
+ADD /rootfs/ /
 
 WORKDIR /var/www/xhgui/webroot
 
