@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
 
   xhgui-xhprof:
-    image: wodby/php:8.2-dev
+    image: wodby/php:8.5-dev
     pull_policy: always
     environment:
       PHP_DEBUG: true
