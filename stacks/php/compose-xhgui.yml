@@ -1,0 +1,53 @@
+services:
+  xhgui-nginx:
+    image: wodby/nginx
+    pull_policy: always
+    environment:
+      NGINX_BACKEND_HOST: xhgui-xhprof
+      NGINX_SERVER_ROOT: "/var/www/html/${XHGUI_NGINX_PUBLIC_DIRECTORY:-public}/"
+      NGINX_VHOST_PRESET: php
+    ports:
+      - "127.0.0.1:${FORWARD_XHGUI_NGINX_PORT:-8081}:80"
+    volumes:
+      - xhgui-app:/var/www/html/
+    restart: unless-stopped
+
+  xhgui-xhprof:
+    image: wodby/php:8.2-dev
+    pull_policy: always
+    environment:
+      PHP_DEBUG: true
+      PHP_XHPROF: true
+      PHP_XHPROF_COLLECT_ADDITIONAL_INFO: 0
+      PHP_XHPROF_OUTPUT_DIR: /data/xhprof/
+      PHP_XHPROF_SAMPLING_DEPTH: INT_MAX
+      PHP_XHPROF_SAMPLING_INTERVAL: 100000
+    volumes:
+      - xhgui-app:/var/www/html/
+      - xhgui-xhprof:/data/xhprof/
+    depends_on:
+      xhgui-nginx:
+        condition: service_started
+    restart: unless-stopped
+
+  xhgui:
+    image: nedix/xhgui
+    pull_policy: always
+    volumes:
+      - xhgui-xhprof:/data/xhprof/
+    ports:
+      - "127.0.0.1:${FORWARD_XHGUI_PORT:-8082}:80"
+    depends_on:
+      xhgui-xhprof:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  xhgui-app:
+    driver: local
+    driver_opts:
+      device: "$PWD"
+      o: bind
+      type: none
+  xhgui-xhprof:
+    driver: local
