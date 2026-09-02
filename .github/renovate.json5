@@ -20,10 +20,9 @@
     {
       depNameTemplate: "XHProf PHP",
       fileMatch: ["^compose-xhgui.yml$"],
-      matchStrings: ["image: wodby/php:(?<currentValue>\d+\\.\d+?)-dev\\n"],
+      matchStrings: ["image: wodby\\/php:(?<currentValue>\d+\\.\d+?)-dev\\n"],
       datasourceTemplate: "docker",
       packageNameTemplate: "php",
     },
   ],
-  includePaths: ["**/*"],
 }
