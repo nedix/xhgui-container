@@ -6,7 +6,10 @@ destroy:
 
 up: HTTP_PORT = "80"
 up:
-	@docker run --rm -d --name xhgui \
+	@docker run \
+		--name xhgui \
+		--rm \
+		-d \
 		-p 127.0.0.1:$(HTTP_PORT):80  \
 		xhgui
 	@docker logs -f xhgui
