@@ -17,5 +17,12 @@
       datasourceTemplate: "github-releases",
       packageNameTemplate: "perftools/xhgui",
     },
+    {
+      depNameTemplate: "XHProf PHP",
+      fileMatch: ["^stacks/php/compose-xhgui.yml$"],
+      matchStrings: ["image: wodby/php:(?<currentValue>\\d+\\.\\d+)-dev\\n"],
+      datasourceTemplate: "docker",
+      packageNameTemplate: "php",
+    },
   ],
 }
