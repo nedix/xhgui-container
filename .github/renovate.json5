@@ -19,7 +19,6 @@
     },
     {
       depNameTemplate: "XHProf PHP",
-      includePaths: ["**/*"],
       fileMatch: ["^compose-xhgui.yml$"],
       matchStrings: ["image: wodby\/php:(?<currentValue>\d+\.\d+?)-dev\\n"],
       datasourceTemplate: "docker",
