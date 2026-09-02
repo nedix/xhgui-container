@@ -25,5 +25,5 @@
       packageNameTemplate: "php",
     },
   ],
-  includePaths: ["**"],
+  includePaths: ["**/*"],
 }
