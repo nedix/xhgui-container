@@ -11,7 +11,7 @@
       packageNameTemplate: "php",
     },
     {
-      depNameTemplate: "XHGUI",
+      depNameTemplate: "XHGui",
       fileMatch: ["^Containerfile$"],
       matchStrings: ["ARG XHGUI_VERSION=(?<currentValue>.*?)\\n"],
       datasourceTemplate: "github-releases",
