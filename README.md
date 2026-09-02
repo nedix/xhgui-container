@@ -6,7 +6,7 @@ Web GUI for XHProf profiling reports.
 ## Usage with the PHP stack
 
 The stack requires that you have a `compose.yml` for your PHP application's services (such as nginx, php-fpm, database, redis, etc.).
-The stack will publish ports on localhost for NGINX (port `8081`, proxy for XHProf) and XHGui (port `8082`).
+The stack will publish ports on localhost for NGINX (proxy for XHProf on port `8081`) and XHGui (port `8082`).
 
 
 ### 1. Create the Compose manifest
