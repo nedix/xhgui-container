@@ -28,7 +28,7 @@ docker compose -f compose.yml -f compose-xhgui.yml up -d
 Navigate to your application on http://127.0.0.1:8081 to capture a profiling report.
 
 
-### 4. Import the profiling data into XHGui
+### 4. Import the profiling report into XHGui
 
 Run the following command to load the data into XHGui:
 
